@@ -1,13 +1,45 @@
+import { useContext, useState } from "react";
+import { TaskContext } from "../../context";
+import { getAllTasks } from "../../data/tasks";
+
 const SearchTask = () => {
+  const { setTask } = useContext(TaskContext);
+  const [searchTerm, setSearchTerm] = useState("");
+  // make copy data for search
+  const [copyTasks] = useState(getAllTasks);
+
+  // seacrh funtionality
+  const handleChange = (e) => {
+    const searchTerm = e.target.value;
+
+    // Update the state with the current search term
+    setSearchTerm(searchTerm);
+
+    // Filter the copy of the original tasks array based on the search term
+    const filtered = copyTasks.filter((task) =>
+      task.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    // Update the state with the filtered tasks
+    setTask(filtered);
+  };
+
   return (
-    <form>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+    >
       <div className="flex">
         <div className="relative overflow-hidden rounded-lg text-gray-50 md:min-w-[380px] lg:min-w-[440px]">
           <input
             type="search"
+            name="search"
             id="search-dropdown"
             className="z-20 block w-full bg-gray-800 px-4 py-2 pr-10 focus:outline-none"
             placeholder="Search Task"
+            value={searchTerm}
+            onChange={handleChange}
             required
           />
           <button
