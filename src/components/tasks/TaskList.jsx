@@ -65,7 +65,7 @@ const TaskList = ({ tasks, handleFav, handleDelete, handleEdit }) => {
                 <div className="flex items-center justify-center space-x-3">
                   <button
                     className="text-red-500"
-                    onClick={() => handleDelete(task.id)}
+                    onClick={() => handleDelete(task)}
                   >
                     Delete
                   </button>

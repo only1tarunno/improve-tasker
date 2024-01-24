@@ -3,6 +3,7 @@ import TaskHeader from "./TaskHeader";
 import TaskList from "./TaskList";
 import { TaskContext } from "../../context";
 import Addtask from "./Addtask";
+import { toast } from "react-toastify";
 
 const TaskBoard = () => {
   const { tasks, setTask } = useContext(TaskContext);
@@ -27,9 +28,16 @@ const TaskBoard = () => {
     setShowAddModal(true);
   };
 
-  const handleDelete = (id) => {
-    const tasksAfterDelete = tasks.filter((task) => task.id !== id);
-    setTask(tasksAfterDelete);
+  const handleDelete = (task) => {
+    const isConfirmed = window.confirm(
+      "Are you sure you want to delete this task?"
+    );
+
+    if (isConfirmed) {
+      const tasksAfterDelete = tasks.filter((item) => item.id !== task.id);
+      setTask(tasksAfterDelete);
+      toast.success(`Task deleted successfully`);
+    }
   };
 
   const handleFav = (id) => {
