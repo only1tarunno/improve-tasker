@@ -7,10 +7,10 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  const [tasks, setTask] = useReducer(getAllTasks);
+  const [tasks, dispatch] = useReducer(getAllTasks);
   return (
     <>
-      <TaskContext.Provider value={{ tasks, setTask }}>
+      <TaskContext.Provider value={{ tasks, dispatch }}>
         <Page />
         <ToastContainer />
       </TaskContext.Provider>
