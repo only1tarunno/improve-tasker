@@ -11,16 +11,12 @@ const SearchTask = () => {
   // seacrh funtionality
   const handleChange = (e) => {
     const searchTerm = e.target.value;
-
-    // Update the state with the current search term
     setSearchTerm(searchTerm);
 
     // Filter the copy of the original tasks array based on the search term
     const filtered = copyTasks.filter((task) =>
       task.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
-    // Update the state with the filtered tasks
     setTask(filtered);
   };
 

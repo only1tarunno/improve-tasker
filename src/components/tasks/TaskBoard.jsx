@@ -14,25 +14,26 @@ const TaskBoard = () => {
     if (isAdd) {
       setTask([...tasks, newTask]);
     } else {
-      const updateTask = tasks.map((task) => {
-        console.log(task.id, newTask.id);
-        return task.id === newTask.id ? newTask : task;
-      });
-      setTask(updateTask);
+      const updatedTasks = tasks.map((task) =>
+        task.id === newTask.id ? newTask : task
+      );
+      setTask(updatedTasks);
     }
+    // Close the modal after adding or updating the task
     handleCloseClick();
   };
 
+  // Set the task to be updated and open the modal for editing
   const handleEdit = (task) => {
     setTaskToUpdate(task);
     setShowAddModal(true);
   };
 
+  // delete a single task
   const handleDelete = (task) => {
     const isConfirmed = window.confirm(
       "Are you sure you want to delete this task?"
     );
-
     if (isConfirmed) {
       const tasksAfterDelete = tasks.filter((item) => item.id !== task.id);
       setTask(tasksAfterDelete);
@@ -40,6 +41,7 @@ const TaskBoard = () => {
     }
   };
 
+  // add and remove favourite
   const handleFav = (id) => {
     const taskIndex = tasks.findIndex((task) => task.id === id);
     const newTaskArray = [...tasks];
@@ -47,6 +49,7 @@ const TaskBoard = () => {
     setTask(newTaskArray);
   };
 
+  // Close the modal and reset the taskToUpdate state
   const handleCloseClick = () => {
     setShowAddModal(false);
     setTaskToUpdate(null);
