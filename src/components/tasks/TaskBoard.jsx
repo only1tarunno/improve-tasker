@@ -13,9 +13,10 @@ const TaskBoard = () => {
     if (isAdd) {
       setTask([...tasks, newTask]);
     } else {
-      const updateTask = tasks.map((task) =>
-        task.id === newTask.id ? newTask : task
-      );
+      const updateTask = tasks.map((task) => {
+        console.log(task.id, newTask.id);
+        return task.id === newTask.id ? newTask : task;
+      });
       setTask(updateTask);
     }
     handleCloseClick();

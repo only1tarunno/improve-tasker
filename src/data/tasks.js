@@ -14,7 +14,7 @@ const tasks = [
     description:
       "Implement a Python solution to synchronize data between an API and a third-party database securely, optimizing data exchange.",
     tags: ["Python", "API", "Data Synchronization"],
-    priority: "High",
+    priority: "Low",
     isFavorite: false,
   },
   {
@@ -23,7 +23,7 @@ const tasks = [
     description:
       "Develop a Python-based solution for connecting an API to a third-party database securely, focusing on efficient data handling and exchange.",
     tags: ["Web", "Python", "API"],
-    priority: "High",
+    priority: "Medium",
     isFavorite: false,
   },
   {
