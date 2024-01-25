@@ -1,4 +1,4 @@
-const tasks = [
+export const initialTasks = [
   {
     id: crypto.randomUUID(),
     title: "Integration API",
@@ -36,9 +36,3 @@ const tasks = [
     isFavorite: false,
   },
 ];
-
-function getAllTasks() {
-  return tasks;
-}
-
-export { getAllTasks };

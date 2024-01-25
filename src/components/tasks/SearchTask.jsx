@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
 import { TaskContext } from "../../context";
-import { getAllTasks } from "../../data/tasks";
+import { initialTasks } from "../../data/tasks";
 
 const SearchTask = () => {
-  const { setTask } = useContext(TaskContext);
+  const { dispatch } = useContext(TaskContext);
   const [searchTerm, setSearchTerm] = useState("");
   // make copy data for search
-  const [copyTasks] = useState(getAllTasks);
+  const [copyTasks] = useState(initialTasks);
 
   // seacrh funtionality
   const handleChange = (e) => {
@@ -14,10 +14,12 @@ const SearchTask = () => {
     setSearchTerm(searchTerm);
 
     // Filter the copy of the original tasks array based on the search term
-    const filtered = copyTasks.filter((task) =>
+    const filteredTasks = copyTasks.filter((task) =>
       task.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    setTask(filtered);
+
+    // Dispatch an action to update the tasks with the filtered results
+    dispatch({ type: "filterTasks", filteredTasks });
   };
 
   return (

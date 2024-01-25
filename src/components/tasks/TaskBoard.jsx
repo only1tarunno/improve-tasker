@@ -6,18 +6,15 @@ import Addtask from "./Addtask";
 import { toast } from "react-toastify";
 
 const TaskBoard = () => {
-  const { tasks, setTask } = useContext(TaskContext);
+  const { tasks, dispatch } = useContext(TaskContext);
   const [showAddModal, setShowAddModal] = useState(false);
   const [taskToUpdate, setTaskToUpdate] = useState(null);
 
   const handleAdd = (newTask, isAdd) => {
     if (isAdd) {
-      setTask([...tasks, newTask]);
+      dispatch({ type: "addTask", newTask });
     } else {
-      const updatedTasks = tasks.map((task) =>
-        task.id === newTask.id ? newTask : task
-      );
-      setTask(updatedTasks);
+      dispatch({ type: "updateTask", newTask });
     }
     // Close the modal after adding or updating the task
     handleCloseClick();
@@ -35,18 +32,20 @@ const TaskBoard = () => {
       "Are you sure you want to delete this task?"
     );
     if (isConfirmed) {
-      const tasksAfterDelete = tasks.filter((item) => item.id !== task.id);
-      setTask(tasksAfterDelete);
+      dispatch({
+        type: "singleDelete",
+        task,
+      });
       toast.success(`Task deleted successfully`);
     }
   };
 
   // add and remove favourite
-  const handleFav = (id) => {
-    const taskIndex = tasks.findIndex((task) => task.id === id);
-    const newTaskArray = [...tasks];
-    newTaskArray[taskIndex].isFavorite = !newTaskArray[taskIndex].isFavorite;
-    setTask(newTaskArray);
+  const handleFav = (task) => {
+    dispatch({
+      type: "isFav",
+      task,
+    });
   };
 
   // Close the modal and reset the taskToUpdate state

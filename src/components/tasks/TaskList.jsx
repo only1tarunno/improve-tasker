@@ -37,7 +37,7 @@ const TaskList = ({ tasks, handleFav, handleDelete, handleEdit }) => {
               className="border-b border-[#2E3443] [&>td]:align-baseline [&>td]:px-4 [&>td]:py-2"
             >
               <td>
-                <button onClick={() => handleFav(task.id)}>
+                <button onClick={() => handleFav(task)}>
                   {task.isFavorite ? (
                     <FaStar color="yellow" />
                   ) : (
