@@ -17,7 +17,6 @@ const TaskBoard = () => {
     } else {
       dispatch({ type: "updateTask", newTask });
     }
-    // Close the modal after adding or updating the task
     handleCloseClick();
   };
 

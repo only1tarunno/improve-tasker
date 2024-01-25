@@ -5,12 +5,12 @@ import TaskBoard from "./components/tasks/TaskBoard";
 
 const Page = () => {
   return (
-    <div>
+    <>
       <Navbar />
       <Baner />
       <TaskBoard />
       <Footer />
-    </div>
+    </>
   );
 };
 

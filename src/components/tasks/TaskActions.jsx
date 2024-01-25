@@ -13,7 +13,7 @@ const TaskActions = ({ handleShow }) => {
       return;
     }
 
-    // Display the default confirmation alert
+    // Display the confirmation alert
     const isConfirmed = window.confirm(
       "Are you sure you want to delete all tasks?"
     );
