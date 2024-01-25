@@ -4,9 +4,15 @@ import { TaskContext } from "../../context";
 import { toast } from "react-toastify";
 
 const TaskActions = ({ handleShow }) => {
-  const { dispatch } = useContext(TaskContext);
+  const { tasks, dispatch } = useContext(TaskContext);
 
   const handleDeleteAll = () => {
+    // Notify the user that there are no tasks to delete
+    if (tasks.length === 0) {
+      toast.warning("No tasks to delete");
+      return;
+    }
+
     // Display the default confirmation alert
     const isConfirmed = window.confirm(
       "Are you sure you want to delete all tasks?"
