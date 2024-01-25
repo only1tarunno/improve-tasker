@@ -17,8 +17,6 @@ const SearchTask = () => {
     const filteredTasks = copyTasks.filter((task) =>
       task.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
-    // Dispatch an action to update the tasks with the filtered results
     dispatch({ type: "filterTasks", filteredTasks });
   };
 

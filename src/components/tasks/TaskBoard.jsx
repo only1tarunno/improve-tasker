@@ -10,6 +10,7 @@ const TaskBoard = () => {
   const [showAddModal, setShowAddModal] = useState(false);
   const [taskToUpdate, setTaskToUpdate] = useState(null);
 
+  // add or update task
   const handleAdd = (newTask, isAdd) => {
     if (isAdd) {
       dispatch({ type: "addTask", newTask });
@@ -32,20 +33,14 @@ const TaskBoard = () => {
       "Are you sure you want to delete this task?"
     );
     if (isConfirmed) {
-      dispatch({
-        type: "singleDelete",
-        task,
-      });
+      dispatch({ type: "singleDelete", task });
       toast.success(`Task deleted successfully`);
     }
   };
 
   // add and remove favourite
   const handleFav = (task) => {
-    dispatch({
-      type: "isFav",
-      task,
-    });
+    dispatch({ type: "isFav", task });
   };
 
   // Close the modal and reset the taskToUpdate state

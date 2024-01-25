@@ -4,7 +4,7 @@ import { TaskContext } from "../../context";
 import { toast } from "react-toastify";
 
 const TaskActions = ({ handleShow }) => {
-  const { setTask } = useContext(TaskContext);
+  const { dispatch } = useContext(TaskContext);
 
   const handleDeleteAll = () => {
     // Display the default confirmation alert
@@ -13,7 +13,7 @@ const TaskActions = ({ handleShow }) => {
     );
 
     if (isConfirmed) {
-      setTask([]);
+      dispatch({ type: "deleteAllTasks" });
       toast.success("All tasks have been deleted");
     }
   };

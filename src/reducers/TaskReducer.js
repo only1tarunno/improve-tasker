@@ -19,9 +19,13 @@ export default function taskReducer(tasks, action) {
       newTaskArray[taskIndex] = modifiedTask;
       return newTaskArray;
     }
-    // delete
+    // delete single task
     case "singleDelete":
       return tasks.filter((item) => item.id !== action.task.id);
+
+    // delete all
+    case "deleteAllTasks":
+      return [];
 
     // search
     case "filterTasks":
