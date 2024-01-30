@@ -1,12 +1,13 @@
 import Baner from "./components/Baner";
 import Footer from "./components/Footer";
-import Navbar from "./components/navbar";
+import Header from "./components/Header";
+
 import TaskBoard from "./components/tasks/TaskBoard";
 
 const Page = () => {
   return (
     <>
-      <Navbar />
+      <Header />
       <Baner />
       <TaskBoard />
       <Footer />
